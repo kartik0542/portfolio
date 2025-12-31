@@ -1,10 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  useScroll,
-  useMotionValueEvent,
-  AnimatePresence,
-  motion,
-} from "framer-motion";
+import { useScroll, useMotionValueEvent, AnimatePresence, motion } from "framer-motion";
 import img1 from "../assets/img1.JPG";
 import img2 from "../assets/img2.JPG";
 import img3 from "../assets/img3.JPG";
@@ -31,46 +26,31 @@ const useIsMobile = (query = "(max-width: 639px)") => {
 };
 
 export default function Projects() {
-  const isMobile = useIsMobile();
-  const sceneRef = useRef(null);
+  const isMobile = useIsMobile();        // current device mobile hai ki nahi ye lake dega 
+  const sceneRef = useRef(null);         // create reference 
 
-  const projects = useMemo(
+  const projects = useMemo(        
     () => [
-      {
-        title: "nk studio",
-        link: "https://www.nk.studio/",
-        bgColor: "#0d4d3d",
-        image: isMobile ? photo1 : img1, // use mobile or desktop image
-      },
-      {
-        title: "Gamily",
-        link: "https://gamilyapp.com/",
-        bgColor: "#3884d3",
-        image: isMobile ? photo2 : img2,
-      },
-      {
-        title: "Hungry Tiger",
-        link: "https://www.eathungrytiger.com/",
-        bgColor: "#dc9317",
-        image: isMobile ? photo3 : img3,
-      },
+      { title: "nk studio", link: "https://www.nk.studio/", bgColor: "#0d4d3d", image: isMobile ? photo1 : img1}, // use mobile or desktop image
+      { title: "Gamily", link: "https://gamilyapp.com/", bgColor: "#3884d3", image: isMobile ? photo2 : img2},
+      { title: "Hungry Tiger", link: "https://www.eathungrytiger.com/", bgColor: "#dc9317", image: isMobile ? photo3 : img3},
     ],
     [isMobile] // re-run only when `isMobile` changes
   );
 
-  const { scrollYProgress } = useScroll({
-    target: sceneRef,
-    offset: ["start start", "end end"],
+  const { scrollYProgress } = useScroll({  // kitna scroll karne pe next section dikhayega
+    target: sceneRef,                      // line-30
+    offset: ["start start", "end end"],    // start start kab likhte hai jab hamare section ka start point or viewport ka start point same ho tab || same to same for end end
   });
-  const thresholds = projects.map((_, i) => (i + 1) / projects.length);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const thresholds = projects.map((_, i) => (i + 1) / projects.length); // yaha i is pro index and length is 3, so for 1st pro it's index is (0+1)/3 = 0.33 , so here threshold 0.33 tak 1st pro show hoga, or jab 0.33 se badhega to pro 2nd 0.66 tak....
+  const [activeIndex, setActiveIndex] = useState(0);                    
 
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    const idx = thresholds.findIndex((t) => v <= t);
-    setActiveIndex(idx === -1 ? thresholds.length - 1 : idx);
+  useMotionValueEvent(scrollYProgress, "change", (v) => {          // jab bhi motion ki value change hogi tab change
+    const idx = thresholds.findIndex((t) => v <= t);               // meri motion ki value t(threshold se kam hogi)
+    setActiveIndex(idx === -1 ? thresholds.length - 1 : idx);      // agar kuch bhi nahi mila to last index dikhayega
   });
 
-  const activeProject = projects[activeIndex];
+  const activeProject = projects[activeIndex];                     // 
 
   return (
     <section
@@ -128,10 +108,10 @@ export default function Projects() {
               </AnimatePresence>
               <div
                 className={`relative w-full overflow-hidden bg-black/20 shadow-2xl
-                md:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)]${
+                md:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)] ${
                   isMobile ? "mb-6 rounded-lg" : "mb-10 sm:mb-12 rounded-xl"
                 }
-                h-[62vh] sm: h-[66vh]
+                h-[62vh] sm:h-[66vh]
                 
                 `}
                 style={{ zIndex: 10, transition: "box-shadow 250ms ease" }}

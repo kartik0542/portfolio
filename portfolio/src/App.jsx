@@ -17,7 +17,11 @@ export default function App() {
 
   return (
     <>
+
+      {/* jab tak hamara intro done nahi hoga tab ham is IntroAnimation ko show karna chenge */}
       {!introDone && <IntroAnimation onFinish={() => setIntroDone(true)} />}
+      
+      {/*    */}
       {introDone && (
         <div className="relative gradient text-white">
           <CustomCursor />
@@ -28,7 +32,7 @@ export default function App() {
           <Skills />
           <Projects />
           <Experience />
-          <Testimonials />
+          {/* <Testimonials /> */}
           <Contact />
           <Footer />
         </div>

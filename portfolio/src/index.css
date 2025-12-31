@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 body{
     font-family: 'Poppins',  sans-serif;
 }
@@ -9,6 +8,7 @@ h1, h2{
     font-family: 'Roboto', sans-serif;
 }
 
+/* ye puri screen me bg colour apply hoga */
 
 @layer utilities {
     .gradient {
