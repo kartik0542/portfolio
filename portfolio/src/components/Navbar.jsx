@@ -100,14 +100,14 @@ export default function Navbar() {
         </div>
 
         {/* Reach Out */}
-        <div className="hidden lg:block">
+        {/* <div className="hidden lg:block">
           <a
             href="#contact"
             className="bg-linear-to-r from-pink-500 to-blue-500 text-white px-5 py-2 rounded-full font-medium shadow-lg hover:opacity-90 transition-opacity duration-300"
           >
             Reach Out
           </a>
-        </div>
+        </div> */}
       </nav>
       <OverlayMenu nu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
       {/* User clicks the hamburger menu → setMenuOpen(true) → menuOpen = true.
