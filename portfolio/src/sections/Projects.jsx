@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useScroll, useMotionValueEvent, AnimatePresence, motion } from "framer-motion";
+import {
+  useScroll,
+  useMotionValueEvent,
+  AnimatePresence,
+  motion,
+} from "framer-motion";
 import img1 from "../assets/img1.JPG";
 import img2 from "../assets/img2.JPG";
 import img3 from "../assets/img3.JPG";
@@ -10,7 +15,7 @@ import photo3 from "../assets/photo3.png";
 const useIsMobile = (query = "(max-width: 639px)") => {
   // custom hook for <639 tab mobile manenge
   const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" && window.matchMedia(query).matches //true or false dega ye device ki width ke according
+    typeof window !== "undefined" && window.matchMedia(query).matches, //true or false dega ye device ki width ke according
   );
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -26,31 +31,37 @@ const useIsMobile = (query = "(max-width: 639px)") => {
 };
 
 export default function Projects() {
-  const isMobile = useIsMobile();        // current device mobile hai ki nahi ye lake dega 
-  const sceneRef = useRef(null);         // create reference 
+  const isMobile = useIsMobile(); // current device mobile hai ki nahi ye lake dega
+  const sceneRef = useRef(null); // create reference
 
-  const projects = useMemo(        
+  const projects = useMemo(
     () => [
-      { title: "nk studio", link: "https://www.nk.studio/", bgColor: "#0d4d3d", image: isMobile ? photo1 : img1}, // use mobile or desktop image
-      { title: "Gamily", link: "https://gamilyapp.com/", bgColor: "#3884d3", image: isMobile ? photo2 : img2},
-      { title: "Hungry Tiger", link: "https://www.eathungrytiger.com/", bgColor: "#dc9317", image: isMobile ? photo3 : img3},
+      {
+        title: "Job Portal",
+        link: "https://job-portal-1-vert.vercel.app/",
+        bgColor: "#0d4d3d",
+        image: isMobile ? photo1 : img1,
+      }, // use mobile or desktop image
     ],
-    [isMobile] // re-run only when `isMobile` changes
+    [isMobile], // re-run only when `isMobile` changes
   );
 
-  const { scrollYProgress } = useScroll({  // kitna scroll karne pe next section dikhayega
-    target: sceneRef,                      // line-30
-    offset: ["start start", "end end"],    // start start kab likhte hai jab hamare section ka start point or viewport ka start point same ho tab || same to same for end end
-  });
-  const thresholds = projects.map((_, i) => (i + 1) / projects.length); // yaha i is pro index and length is 3, so for 1st pro it's index is (0+1)/3 = 0.33 , so here threshold 0.33 tak 1st pro show hoga, or jab 0.33 se badhega to pro 2nd 0.66 tak....
-  const [activeIndex, setActiveIndex] = useState(0);                    
-
-  useMotionValueEvent(scrollYProgress, "change", (v) => {          // jab bhi motion ki value change hogi tab change
-    const idx = thresholds.findIndex((t) => v <= t);               // meri motion ki value t(threshold se kam hogi)
-    setActiveIndex(idx === -1 ? thresholds.length - 1 : idx);      // agar kuch bhi nahi mila to last index dikhayega
+  const { scrollYProgress } = useScroll({
+    // kitna scroll karne pe next section dikhayega
+    target: sceneRef, // line-30
+    offset: ["start start", "end end"], // start start kab likhte hai jab hamare section ka start point or viewport ka start point same ho tab || same to same for end end
   });
 
-  const activeProject = projects[activeIndex];                     // 
+  const thresholds = projects.map((_, i) => (i + 1) / projects.length);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    // jab bhi motion ki value change hogi tab change
+    const idx = thresholds.findIndex((t) => v <= t);
+    setActiveIndex(idx === -1 ? thresholds.length - 1 : idx);
+  });
+
+  const activeProject = projects[activeIndex];
 
   return (
     <section
@@ -63,7 +74,7 @@ export default function Projects() {
         transition: "background-color 400ms ease",
       }}
     >
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center">
+      <div className="sticky top-0 h-screen flex flex-col items-center justify-center z-20">
         <h2
           className={`text-3xl font-semibold z-10 text-center ${
             isMobile ? "mt-4" : "mt-8"
@@ -71,6 +82,7 @@ export default function Projects() {
         >
           My Work
         </h2>
+
         <div
           className={`relative w-full flex-1 flex items-center justify-center ${
             isMobile ? "-mt-4" : ""
@@ -78,7 +90,7 @@ export default function Projects() {
         >
           {projects.map((project, idx) => (
             <div
-              key={projects.title}
+              key={project.title} // ✅ FIX
               className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
                 activeIndex === idx
                   ? "opacity-100 z-20"
@@ -106,15 +118,15 @@ export default function Projects() {
                   </motion.h3>
                 )}
               </AnimatePresence>
+
               <div
-                className={`relative w-full overflow-hidden bg-black/20 shadow-2xl
+                className={`relative w-full overflow-hidden bg-black/20 shadow-2xl z-10
                 md:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)] ${
                   isMobile ? "mb-6 rounded-lg" : "mb-10 sm:mb-12 rounded-xl"
                 }
                 h-[62vh] sm:h-[66vh]
-                
                 `}
-                style={{ zIndex: 10, transition: "box-shadow 250ms ease" }}
+                style={{ transition: "box-shadow 250ms ease" }}
               >
                 <img
                   src={project.image}
@@ -128,10 +140,11 @@ export default function Projects() {
                   }}
                   loading="lazy"
                 />
+
                 <div
-                  className="pointer-events-none absolute inset-0"
+                  className="absolute inset-0 pointer-events-none"
                   style={{
-                    zInde: 11,
+                    zIndex: 1, // ✅ FIX (typo removed)
                     background:
                       "linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 40%)",
                   }}
@@ -141,14 +154,17 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className={`absolute ${isMobile ? "bottom-20" : "bottom-10"}`}>
+        <div
+          className={`absolute ${
+            isMobile ? "bottom-20" : "bottom-10"
+          } z-[999]`} // ✅ FIX
+        >
           <a
             href={activeProject?.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-6 py-3 font-semibold rounded-lg bg-white text-black hover:bg-gray-200 transition-all
-          aria-label={`View${activeProject?.title}`}
-          "
+            aria-label={`View ${activeProject?.title}`} // ✅ FIX
+            className="inline-block px-6 py-3 font-semibold rounded-lg bg-white text-black hover:bg-gray-200 cursor-pointer transition-all"
           >
             View Project
           </a>

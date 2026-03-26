@@ -6,7 +6,7 @@ export default function About() {
   const stats = [
     { label: "Experience", value: "1+ years" },
     { label: "Speciality", value: "Full Stack" },
-    { label: "Focus", value: "Performance & UX" },
+    //{ label: "Focus", value: "Performance & UX" },
   ];
 
   const glows = [                    // Define glow styles
@@ -67,7 +67,7 @@ export default function About() {
             
             {/* Para-1 */}
             <p className="mt-2 text-lg sm:text-xl text-white/90 font-semibold">
-              Full Stack Developer
+              MERN Stack Developer
             </p>
             
             {/* Para-2 */}
@@ -104,12 +104,12 @@ export default function About() {
               >
                 View Projects
               </a>
-              <a
+              {/* <a
                 href="#contacts"
                 className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white px-5 py-3 hover:bg-white/20 transition"
               >
                 Get in Touch
-              </a>
+              </a> */}
             </div>
           </div>
         </motion.div>

@@ -3,24 +3,32 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const experiences = [
   {
-    role: "Web Developer",
-    company: "Brain Mentors",
-    duration: "2022",
+    role: "Higher Secondary (98.57%)",
+    company: "12th Grade",
+    duration: "2021",
     description:
-      "Built high-performance apps, integrated AI features, improved engagement by 10%.",
+      "Completed higher secondary education with Physics, Chemistry, and Mathematics, building a strong analytical and problem-solving foundation.",
   },
   {
-    role: "Web Developer Intern",
-    company: "Mobisoft Technologies",
-    duration: "2022 - 2023",
-    description: "Gained hands-on web development experience.",
+    role: "Hackathon Participant",
+    company: "SSIP Hackathon",
+    duration: "2023",
+    description:
+      "Participated in SSIP Hackathon, where I collaborated in a team to solve real-world problems and gained exposure to practical development and innovation.",
   },
   {
-    role: "Graduate Engineer",
-    company: "HCL Technologies",
-    duration: "2024 - 2025",
+    role: "Bachelor's Degree Graduate",
+    company: "Computer Engineering",
+    duration: "2021 - 2025",
     description:
-      "Built frontend of GenAI-powered PV Intake App with Next.js & TS for US client.",
+      "Graduated in Computer Engineering with a focus on web development, data structures, and modern technologies.",
+  },
+  {
+    role: "MERN Stack Developer",
+    company: "Professional Experience",
+    duration: "2025 - Present",
+    description:
+      "Working as a MERN Stack Developer with 1+ year of experience, building scalable web applications, REST APIs, and integrating modern tools and AI-based features.",
   },
 ];
 
@@ -31,7 +39,7 @@ function ExperienceItem({ exp, idx, start, end, scrollYProgress, layout }) {
     // for lap moment
     scrollYProgress,
     [start, end],
-    [idx % 2 === 0 ? 30 : -30, 0]
+    [idx % 2 === 0 ? 30 : -30, 0],
   );
   const x = useTransform(scrollYProgress, [start, end], [-24, 0]); // for mobile moment
 
@@ -108,7 +116,7 @@ export default function Experience() {
   });
   const thresholds = useMemo(
     () => experiences.map((_, i) => (i + 1) / experiences.length),
-    []
+    [],
   );
 
   const lineSize = useTransform(scrollYProgress, (v) => `${v * 100}%`);
@@ -122,7 +130,7 @@ export default function Experience() {
       >
         <div className="sticky top-0 h-screen flex flex-col">
           <h2 className="text-4xl sm:text-5xl font-semibold mt-5 text-center">
-            Experience
+            Journey
           </h2>
           <div className="flex flex-1 items-center justify-center px-6 pb-10">
             {!isMobile && (

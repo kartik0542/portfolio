@@ -33,7 +33,7 @@ export default function App() {
           <Projects />
           <Experience />
           {/* <Testimonials /> */}
-          <Contact />
+          {/* <Contact /> */}
           <Footer />
         </div>
       )}

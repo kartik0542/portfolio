@@ -1,22 +1,23 @@
 import { FaJava, FaReact } from "react-icons/fa";
-import { SiNextdotjs, SiTypescript, SiTailwindcss, SiFastapi, SiPython, SiDocker, SiMongodb, SiAngular} from "react-icons/si";
+import { SiNextdotjs, SiTypescript, SiTailwindcss, SiFastapi, SiPython, SiDocker, SiMongodb, SiAngular, SiExpress} from "react-icons/si";
 import { DiNodejsSmall } from "react-icons/di";
 import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 export default function Skills() {
   const skills = [
-    { icon: <FaJava />, name: "Java" },
+    //{ icon: <FaJava />, name: "Java" },
     { icon: <FaReact />, name: "React" },
-    { icon: <SiNextdotjs />, name: "Next.js" },
-    { icon: <SiTypescript />, name: "TypeScript" },
+    //{ icon: <SiNextdotjs />, name: "Next.js" },
+    //{ icon: <SiTypescript />, name: "TypeScript" },
     { icon: <SiTailwindcss />, name: "Tailwind CSS" },
     { icon: <SiFastapi />, name: "FastAPI" },
-    { icon: <SiPython />, name: "Python" },
-    { icon: <SiDocker />, name: "Docker" },
+    //{ icon: <SiPython />, name: "Python" },
+    //{ icon: <SiDocker />, name: "Docker" },
     { icon: <DiNodejsSmall />, name: "Node.js" },
     { icon: <SiMongodb />, name: "MongoDB" },
-    { icon: <SiAngular />, name: "Angular" },
+    { icon: <SiExpress />, name: "Express" },
+    //{ icon: <SiAngular />, name: "Angular" },
   ];
 
   const repeated = [...skills, ...skills]; // repeat ke liye

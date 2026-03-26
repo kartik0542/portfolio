@@ -34,7 +34,7 @@ export default function OverlayMenu({ isOpen, onClose }) {
               "Projects",
               "Experience",
               // "Testimonials",
-              "Contact",
+              //"Contact",
             ].map(
               (
                 item,

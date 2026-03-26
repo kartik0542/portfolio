@@ -32,7 +32,7 @@ export default function Contact() {
     const required = ["name", "email", "service", "idea"];
     const newErrors = {}; // jo khali hai wo yahi store hota hai
     required.forEach(
-      (f) => !formData[f].trim() && (newErrors[f] = "Fill this field")
+      (f) => !formData[f].trim() && (newErrors[f] = "Fill this field"),
     ); //har ek par loop hota hai or give message and trim se jab aap spaces type karte ho phir bhi error dega
     if (formData.service !== "other" && !formData.budget.trim())
       // jab user ne other nahi select kar rakha tab budget ki field empty ho tab ye error dikhani hai
@@ -56,7 +56,7 @@ export default function Contact() {
           from_name: formData.name,
           reply_to: formData.email,
         },
-        PUBLIC_KEY
+        PUBLIC_KEY,
       );
       setStatus("success");
       // form success ho jane ke bad phirse refresh hoga
@@ -154,7 +154,7 @@ export default function Contact() {
 
             {/* Service Needed */}
 
-            <div className="flex flex-col">
+            {/* <div className="flex flex-col">
               <label className="mb-1">
                 Service Needed <span className="text-red-500">*</span>
               </label>
@@ -182,12 +182,12 @@ export default function Contact() {
               {errors.service && ( // error hai to line run hogi
                 <p className="text-red-500 text-xs">{errors.service}</p>
               )}
-            </div>
+            </div> */}
 
             {/* Your Budget */}
 
             {/* jo value other select thase to budget nahi batave */}
-            {formData.service && formData.service !== "other" && (
+            {/* {formData.service && formData.service !== "other" && (
               <div className="flex flex-col">
                 <label className="mb-1">
                   Budget <span className="text-red-500">*</span>{" "}
@@ -206,10 +206,10 @@ export default function Contact() {
                   <p className="text-red-500 text-xs">{errors.budget}</p>
                 )}
               </div>
-            )}
+            )} */}
 
             {/* Explain Your Idea */}
-
+            {/* 
             <div className="flex flex-col">
               <label className="mb-1">
                 Explain Your Idea <span className="text-red-500">*</span>
@@ -227,7 +227,7 @@ export default function Contact() {
               {errors.idea && ( // error hai to line run hogi
                 <p className="text-red-500 text-xs">{errors.idea}</p>
               )}
-            </div>
+            </div> */}
 
             {/* Message sent successfully dikhane ke liye */}
 
@@ -237,15 +237,15 @@ export default function Contact() {
                   status === "success"
                     ? "text-green-400"
                     : status === "error"
-                    ? "text-red-400"
-                    : "text-yellow-400"
+                      ? "text-red-400"
+                      : "text-yellow-400"
                 }`}
               >
                 {status === "sending"
                   ? "sending..."
                   : status === "success"
-                  ? "Message sent successfully ✅"
-                  : "Something went wrong. Please try again ❌"}
+                    ? "Message sent successfully ✅"
+                    : "Something went wrong. Please try again ❌"}
               </p>
             )}
 
