@@ -9,7 +9,8 @@ export default function About() {
     //{ label: "Focus", value: "Performance & UX" },
   ];
 
-  const glows = [                    // Define glow styles
+  const glows = [
+    // Define glow styles
     "-top-10 -left-10 w-[360px] h-[360px] opacity-20 blur-[120px]",
     "bottom-0 -right-10 w-[420px] h-[420px] opacity-15 blur-[140px] delay-300",
     "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] opacity-10 blur-[100px]",
@@ -20,7 +21,6 @@ export default function About() {
       id="about"
       className="min-h-screen h-full flex items-center justify-center relative bg-black text-white overflow-hidden"
     >
-      
       {/* Glows */}
       <div className="absolute inset-0 pointer-events-none">
         {glows.map((c, i) => (
@@ -33,7 +33,6 @@ export default function About() {
 
       {/* Whole Container */}
       <div className="relative z-10 max-w-6xl w-full mx-auto px-6 md:px-10 lg:px-12 py-20 flex flex-col gap-12">
-        
         {/* Up Side Part */}
         <motion.div
           className="flex flex-col md:flex-row items-center md:items-stretch gap-8"
@@ -42,7 +41,6 @@ export default function About() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.4 }}
         >
-          
           {/* Image */}
           <motion.div
             className="relative w-40 h-50 md:w-50 md:h-50
@@ -50,12 +48,11 @@ export default function About() {
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 200, damping: 10 }}
           >
-            <img src={p} alt="profile" className="absolute inset-0"/>
+            <img src={p} alt="profile" className="absolute inset-0" />
           </motion.div>
 
           {/* Writing Container */}
           <div className="flex-1 flex flex-col justify-center text-center md:text-left">
-            
             {/* Name */}
             <h2
               className="text-4xl sm:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent
@@ -64,21 +61,21 @@ export default function About() {
             >
               Kartik Kathrotiya
             </h2>
-            
+
             {/* Para-1 */}
             <p className="mt-2 text-lg sm:text-xl text-white/90 font-semibold">
               MERN Stack Developer
             </p>
-            
+
             {/* Para-2 */}
             <p className="mt-4 text-gray-300 leading-relaxed text-base sm:text-lg max-w-2xl md:max-w-3xl">
               I build scalable, modern applications with a strong focus on clean
               architecture, delightful UX, and performance. My toolkit spans
-              Java, React, Next.js, TypeScript, Tailwind CSS, and
-              FastAPI—bringing ideas to life from concept to production with
-              robust APIs and smooth interfaces.
+              JavaScript, React, Next.js, Tailwind CSS, and FastAPI—bringing
+              ideas to life from concept to production with robust APIs and
+              smooth interfaces.
             </p>
-            
+
             {/* 3 - box */}
             <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-xl">
               {stats.map((item, i) => (
@@ -126,9 +123,14 @@ export default function About() {
             About Me
           </h3>
           <p className="text-gray-300 leading-relaxed text-base sm:text-lg">
-            I'm a Software Developer, Content Creator, and Web Developer —
-            passionate about building fast, resilient applications and sharing
-            coding insights on Instagram and YouTube.
+            <p className="mt-4 text-gray-300 leading-relaxed text-base sm:text-lg max-w-2xl md:max-w-3xl">
+              I'm a MERN Stack Developer who loves transforming ideas into
+              powerful web applications. With expertise in MongoDB, Express.js,
+              React, and Node.js, I build fast, scalable, and user-centric
+              products. I enjoy solving complex problems, optimizing
+              performance, and creating smooth, intuitive user experiences that
+              make an impact.
+            </p>
           </p>
           <p className="mt-4 text-gray-400 text-base sm:text-lg">
             I love turning ideas into scalable, user-friendly products that make
